@@ -47,9 +47,9 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\CameraFollow.cs" />
-     <Compile Include="Assets\Scripts\ClickEvent.cs" />
      <Compile Include="Assets\Scripts\HeroContral.cs" />
      <Compile Include="Assets\Scripts\HeroState.cs" />
+     <Compile Include="Assets\Scripts\ItemEvent.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>D:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
