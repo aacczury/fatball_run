@@ -2,10 +2,11 @@
 using System.Collections;
 
 public class HeroContral : MonoBehaviour {
-	public float moveForce = 1f;
+	public float moveForce = 300f;
 
 	private Transform groundCheck;
 	private bool grounded = false;
+	private bool firstGround = false;
 	void Awake(){
 		groundCheck = transform.Find("groundCheck");
 	}
@@ -17,14 +18,22 @@ public class HeroContral : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		bool lastGrounded = grounded;
-		grounded = Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Ground"));
+		if (!firstGround) {
+			bool lastGrounded = grounded;
+			grounded = Physics2D.Linecast (transform.position, groundCheck.position, 1 << LayerMask.NameToLayer ("Ground"));
 
-		if(lastGrounded != grounded)
-			GetComponent<Rigidbody2D> ().AddForce (Vector2.right * moveForce);
+			if (lastGrounded != grounded){
+				pushHero ();
+				firstGround = true;
+			}
+		}
 	}
 
 	void FixedUpdate () {
 
+	}
+
+	public void pushHero(){
+		GetComponent<Rigidbody2D> ().AddForce (Vector2.right * moveForce);
 	}
 }
